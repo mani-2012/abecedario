@@ -1,32 +1,29 @@
-narizX=0;
-narizY=0;
 manoI=0;
 manoD=0;
-resta=0;
+restar=0;
 function setup(){
-    cuadro=createCanvas(400, 400);
-    cuadro.position(850,170);
-    camara=createCapture(VIDEO);
-    camara.size(400,400);
-    camara.position(250,85);
-    poses=ml5.poseNet(camara,reyes);
-    poses.on('pose',mosquito);
+    cuadrado=createCanvas(400, 400);
+    cuadrado.position(850,170);
+    vidio=createCapture(VIDEO);
+    vidio.size(400,400);
+    vidio.position(250,170);
+    poste=ml5.poseNet(vidio,pluma);
+    poste.on('pose',mariposa);
 }
-function reyes(){
-    console.log("YA esta LISTO tu modelo ;)");
+function draw(){
+    background("cadetblue")
+    fill("white");
+    textSize(restar);
+    text("Hay que Aprender y luego jugar",20,200);
 }
-function mosquito(respuesta){
-if (respuesta.length>0) {
-    console.log(respuesta);
-    narizY=respuesta[0].pose.nose.y;
-    narizX=respuesta[0].pose.nose.x;
-    manoI=respuesta[0].pose.leftWrist.x;
-    manoD=respuesta[0].pose.rightWrist.x;
-    resta=floor(manoI-manoD);
+function pluma(){
+    console.log("YA ESTA LISTO");
 }
-}
-function draw() {
-    background("burlywood");
-    fill('orchid');
-    square(narizX,narizY,resta);
-}
+function mariposa(resultado){
+    if (resultado.length>0) {
+        console.log(resultado);
+        manoI=resultado[0].pose.leftWrist.x;
+        manoD=resultado[0].pose.rightWrist.x;
+        restar=floor(manoI-manoD);
+    }
+    }
