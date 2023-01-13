@@ -1,25 +1,32 @@
+narizX=0;
+narizY=0;
 manoI=0;
 manoD=0;
-restar=0;
+resta=0;
 function setup(){
-    cuadrado=createCanvas(400, 400);
-    cuadrado.position(850,170);
-    vidio=createCapture(VIDEO);
-    vidio.size(400,400);
-    vidio.position(250,170);
-    poste=ml5.poseNet(vidio,pluma);
-    poste.on('pose',mariposa)
+    cuadro=createCanvas(400, 400);
+    cuadro.position(850,170);
+    camara=createCapture(VIDEO);
+    camara.size(400,400);
+    camara.position(250,85);
+    poses=ml5.poseNet(camara,reyes);
+    poses.on('pose',mosquito);
 }
-function preload(){
-
+function reyes(){
+    console.log("YA esta LISTO tu modelo ;)");
 }
-function pluma(){
-    console.log("YA ESTA LISTO");
+function mosquito(respuesta){
+if (respuesta.length>0) {
+    console.log(respuesta);
+    narizY=respuesta[0].pose.nose.y;
+    narizX=respuesta[0].pose.nose.x;
+    manoI=respuesta[0].pose.leftWrist.x;
+    manoD=respuesta[0].pose.rightWrist.x;
+    resta=floor(manoI-manoD);
 }
-function mariposa(resultado){
-    if (resultado.length>0) {
-        console.log(resultado);
-        manoI=resultado[0].pose.leftWrist.x;
-        manoD=resultado[0].pose.rightWrist.x;
-    }
-    }
+}
+function draw() {
+    background("burlywood");
+    fill('orchid');
+    square(narizX,narizY,resta);
+}
