@@ -1,14 +1,14 @@
 body{
-    background:linear-gradient(palegreen,palegoldenrod,orchid);
+    background:linear-gradient(rgb(97, 251, 97),rgb(225, 237, 117),cadetblue);
 }
 .height{
-    background-color: rgb(92, 155, 222);
-    color: white;
+    background-color: rgb(242, 244, 154);
+    color: rgb(0, 0, 0);
 }
 .right_footer{
  bottom: 0;
  position: fixed;   
- background-color: #eb7b8c;
+ background-color: rgb(235, 123, 140);
  text-align: center;
  font-size: 25px;
  color:white;
@@ -16,8 +16,14 @@ body{
  width: 100%;
 }
 canvas{
-    background-color: burlywood;
-    border-color: cadetblue;
-    border-style:dotted ;
+    background-color: cadetblue;
+    border-color: burlywood;
+    border-style:double ;
+    border-width: 20px;
+}
+video{
+    background-color:rgb(235, 123, 140);
+    border-color: rgb(231, 246, 96);
+    border-style: dotted;
     border-width: 20px;
 }
